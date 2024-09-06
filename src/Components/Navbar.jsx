@@ -8,19 +8,27 @@ const Navbar = () => {
 
   const {themeDark, setThemeDark} = useDentistStates();
 
-  const handleTheme = () => {
-    themeDark ? setThemeDark(false) : setThemeDark(true);
+  const handleTheme = (e) => {
+    const checked = e.target.checked;
+    checked ? setThemeDark(false) : setThemeDark(true);
   }
 
   return (
     <nav>
-      <h1>ColmeClinic</h1>
-      <div>
-        <Link to={`/`}>Home</Link>
-        <Link to={`/contact`}>Contact </Link>
-        <Link to={`/favs`}>Favs</Link>
-        <button onClick={handleTheme}>Change theme</button>
-      </div>
+     <h1>ColmeClinic</h1>
+      <ul>
+        <li><Link to={`/`}>Home</Link></li>
+        <li><Link to={`/contact`}>Contact </Link></li>
+        <li><Link to={`/favs`}>Favs</Link></li>
+        {/* <li><button onClick={handleTheme}>Change theme</button></li> */}
+        <div className = 'toggleSwitch'>
+            <label>
+                <input type = 'checkbox' onChange={handleTheme} checked={!themeDark}/>
+                <span className = 'slider'></span>
+            </label>
+        </div>
+        
+      </ul>
     </nav>
  
     

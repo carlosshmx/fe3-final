@@ -1,5 +1,5 @@
 import React from "react";
-import doctor from "../../public/images/doctor.jpg"
+import doctor from "/images/doctor.jpg"
 import { Link, useNavigate } from "react-router-dom";
 import {useDentistStates} from '../Components/utils/global.context'
 
@@ -10,15 +10,27 @@ const Card = ({ name, username, id, deletable }) => {
 
   const navigate = useNavigate();
 
+  const verifyDuplication = (savedValue, id)=>{
+    return savedValue.some(dentist => dentist.id === id);
+  }
+
 
   const addFav = ()=>{
     // Aqui iria la logica para agregar la Card en el localStorage✅
     const newDentist = {name:name, username:username, id:id}; //Crea un objeto con los datos del dentista
     const savedValue = JSON.parse(localStorage.getItem('locStrgDentist')); //trae el array guardado en el localStorage para agregar el nuevo elemento
-    savedValue.push(newDentist);                               
-    localStorage.setItem('locStrgDentist', JSON.stringify(savedValue))
 
-    setLocStrgDentist(JSON.parse(localStorage.getItem('locStrgDentist'))); //actualiza el estado del contexto (opcional)
+    if(verifyDuplication(savedValue, id)){ //Verifica si ya existe el destista en localStorage.
+      alert('This dentist is already a favorite')
+    }else{
+      savedValue.push(newDentist); 
+      localStorage.setItem('locStrgDentist', JSON.stringify(savedValue))
+
+      setLocStrgDentist(JSON.parse(localStorage.getItem('locStrgDentist'))); //actualiza el estado del contexto (opcional)
+
+      alert('Dentist added to favorites')
+    }
+                        
   }
 
   const delFav = ()=>{

@@ -1,3 +1,8 @@
+:root {
+  --light: #d8dbe0;
+  --dark: #28292c;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -25,11 +30,19 @@ h1{
 
 nav{
   display: flex;
-  width: 80vw;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 0 5rem;
   margin: 0 auto;
+  background-color: #d8d8d8;
+}
+
+nav ul{
+  height: 50px;
+  display: flex;
+  list-style: none;
+  align-items: center;
+  
 }
 
 a{
@@ -100,6 +113,18 @@ form{
   margin: 0 auto;
 }
 
+form input{
+  border: none;
+  border-bottom: 1px solid gray;
+  height: 20px;
+}
+
+form input:focus{
+  outline: none;
+  border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+
 table {
  border-collapse: collapse;
     border-spacing: 0;
@@ -130,4 +155,84 @@ tr:nth-child(even) {
 
 .dark a {
   color: white;
+}
+
+.dark form input{
+  border: none;
+  border-bottom: 1px solid rgb(0, 0, 0);
+  background-color: #737373;
+  color: white;
+}
+
+.dark form input::placeholder{
+  color: rgb(212, 212, 212);
+}
+
+.dark form input:focus{
+  outline: none;
+  border-bottom: 1px solid rgb(255, 255, 255);
+}
+
+/* themeSwitch  */
+
+.toggleSwitch {
+  width: 80px;
+  height: 50px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+  
+}
+
+.toggleSwitch label {
+  position: absolute;
+  width: 60px;
+  height: 30px;
+  background-color: rgb(0, 0, 50);
+  border-radius: 50px;
+  cursor: pointer;
+  filter: drop-shadow(0px 0px 3px rgba(125, 125, 125, 0.709));
+}
+
+.toggleSwitch input {
+  position: absolute;
+  display: none;
+
+}
+
+.toggleSwitch .slider {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+  transition: 0.3s;
+  
+}
+
+.toggleSwitch input:checked ~ .slider {
+  background-color: rgb(130, 197, 255);
+  transform: scale(1.03);
+ 
+}
+
+.toggleSwitch .slider::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 6px;
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  box-shadow: inset 7px -0px 0px 0px white;
+  background-color: rgb(0, 0, 50);
+  transition: 0.3s;
+  
+}
+
+.toggleSwitch input:checked ~ .slider::before {
+  transform: translateX(26px);
+  background-color: yellow;
+  box-shadow: none;
+  
 }
