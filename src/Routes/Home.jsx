@@ -9,20 +9,13 @@ const Home = () => {
   const {dentistList, loading} = useDentistStates();
 
   return (
-    <main className="" >
+    <main>
       <h1>Home</h1>
       <div className='card-grid'>
-        <ul>
           {!loading ? (
-            dentistList.map((dentist, index) => {
-            <li key={index}>
-              <img src="" alt="" />
-              <p>{dentist.name}</p>
-              <p>Hola</p>
-              <p>{dentist.username}</p>
-            </li>
-          })) : <h2>Cargando...</h2>}
-        </ul>
+            dentistList.map((dentist) => (
+              <Card id={dentist.id} name={dentist.name} username={dentist.username} key={dentist.id}/>
+          ))) : <h2>Cargando...</h2>}
         
       </div>
     </main>

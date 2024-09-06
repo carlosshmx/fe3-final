@@ -6,10 +6,12 @@ import Home from "./Routes/Home"
 import Favs from "./Routes/Favs"
 import Detail from "./Routes/Detail"
 import Contact from "./Routes/Contact";
+import {useDentistStates} from './Components/utils/global.context'
 
 function App() {
+  const {themeDark} = useDentistStates();
   return (
-      <div className="App">
+      <div className={themeDark ? ('App dark') : 'App'}>
           <Navbar/>
           <Routes>
             <Route path='/' element={<Home/>}/>

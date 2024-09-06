@@ -7,6 +7,16 @@ export const initialState = {theme: "", data: []}
 export const ContextGlobal = createContext(undefined);
 
 export const ContextProvider = ({ children }) => {
+  
+  const savedValue = localStorage.getItem('locStrgDentist'); //Guarda en una constante el valor del localStorage (Si existe)
+  savedValue ? null : localStorage.setItem('locStrgDentist', '[]'); //Si existe el localStoge no hace nada, sino lo crea
+
+  const [locStrgDentist, setLocStrgDentist] = useState(() => {  //usarmos un estado para sincronizar con el localStorage (opcional)
+    return savedValue ? JSON.parse(savedValue) : [];
+  });
+
+  const [themeDark, setThemeDark] = useState(false);
+
   //Aqui deberan implementar la logica propia del Context, utilizando el hook useMemo
   const navigate = useNavigate();
 
@@ -29,7 +39,7 @@ export const ContextProvider = ({ children }) => {
   },[]);
 
   return (
-    <ContextGlobal.Provider value={{dentistList, loading}}>
+    <ContextGlobal.Provider value={{dentistList, loading, setLocStrgDentist, themeDark, setThemeDark}}>
       {children}
     </ContextGlobal.Provider>
   );
