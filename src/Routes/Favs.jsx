@@ -8,7 +8,7 @@ const Favs = () => {
   const locStrgDentist = JSON.parse(localStorage.getItem('locStrgDentist'));
 
   return (
-    <>
+    <div className="favs">
       <h1>Dentists Favs</h1>
       <div className="card-grid">
         {/* este componente debe consumir los destacados del localStorage✅*/}
@@ -18,7 +18,7 @@ const Favs = () => {
               <Card id={dentist.id} name={dentist.name} username={dentist.username} key={dentist.id} deletable={true}/>
           ))) : <h2>No has agreago dentistas</h2>}
       </div>
-    </>
+    </div>
   );
 };
 
