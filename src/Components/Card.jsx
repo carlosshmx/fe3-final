@@ -39,7 +39,7 @@ const Card = ({ name, username, id, deletable }) => {
     localStorage.setItem('locStrgDentist', JSON.stringify(newList))
 
     setLocStrgDentist(JSON.parse(localStorage.getItem('locStrgDentist')));
-    window.location.reload();
+    // window.location.reload();
   }
 
   return (

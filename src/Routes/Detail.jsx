@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
@@ -31,15 +31,27 @@ const Detail = () => {
   return (
     <>
      {!loading ? (
-      <>
-        <h1>Detail Dentist id: {dentist.id} </h1>
-        <div>
-          <p>Nombre: {dentist.name}</p>
-          <p>Email: {dentist.email}</p>
-          <p>Telefono: {dentist.phone}</p>
-          <p>Sitio web: {dentist.website}</p> 
-        </div>
-      </>
+      <div className='details'>
+        <h2>Detail Dentist id: {dentist.id} </h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Website</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{dentist.name}</td>
+              <td>{dentist.email}</td>
+              <td>{dentist.phone}</td>
+              <td>{dentist.website}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       ):(
         <h2>Cargando...</h2>
       )} 

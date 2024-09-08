@@ -39,7 +39,7 @@ export const ContextProvider = ({ children }) => {
   },[]);
 
   return (
-    <ContextGlobal.Provider value={{dentistList, loading, setLocStrgDentist, themeDark, setThemeDark}}>
+    <ContextGlobal.Provider value={{dentistList, loading, locStrgDentist, setLocStrgDentist, themeDark, setThemeDark}}>
       {children}
     </ContextGlobal.Provider>
   );

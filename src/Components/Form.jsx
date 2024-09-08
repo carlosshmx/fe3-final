@@ -33,6 +33,7 @@ const Form = () => {
       <form onSubmit={handleSubmit}>
         <input type="text" placeholder="Nombre" onChange={handleNameInput}/>
         <input type="email" placeholder="Email" onChange={handleEmailInput}/>
+        <textarea name="" id="" placeholder="Write your message here"></textarea>
         <button type="submit">Enviar</button>
       </form>
 
