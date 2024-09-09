@@ -9,9 +9,9 @@ import Contact from "./Routes/Contact";
 import {useDentistStates} from './Components/utils/global.context'
 
 function App() {
-  const {themeDark} = useDentistStates();
+  const {state} = useDentistStates();
   return (
-      <div className={themeDark ? ('App dark') : 'App'}>
+      <div className={'App' + " " + state.theme}>
           <Navbar/>
           <Routes>
             <Route path='/' element={<Home/>}/>

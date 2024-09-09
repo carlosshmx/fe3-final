@@ -1,10 +1,25 @@
-import React, { useEffect, useState, createContext, useContext } from 'react'
+import React, { useEffect, useState, createContext, useContext, useReducer, } from 'react'
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 
-export const initialState = {theme: "", data: []}
 
 export const ContextGlobal = createContext(undefined);
+
+const reducer = (state, action) =>{
+  switch(action.type){
+    case "ADD_DENTIS":
+      return {}
+    case "DEL_DENTIST":
+      return {}
+    case "THEME_DARK":
+      return {... state, theme: "dark"}
+    case "THEME_LIGTH":
+      return {... state, theme: "light"}
+  }
+}
+
+export const initialState = {theme: "light", data: []}
+
 
 export const ContextProvider = ({ children }) => {
   
@@ -23,6 +38,9 @@ export const ContextProvider = ({ children }) => {
   const [dentistList, setDentistList] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const [state, dispatch] = useReducer(reducer, initialState);
+  console.log(state);
+
   useEffect(()=>{
     setLoading(true);
     const fetchtData = async () => {
@@ -39,7 +57,7 @@ export const ContextProvider = ({ children }) => {
   },[]);
 
   return (
-    <ContextGlobal.Provider value={{dentistList, loading, locStrgDentist, setLocStrgDentist, themeDark, setThemeDark}}>
+    <ContextGlobal.Provider value={{dentistList, loading, locStrgDentist, setLocStrgDentist, themeDark, setThemeDark, state, dispatch}}>
       {children}
     </ContextGlobal.Provider>
   );

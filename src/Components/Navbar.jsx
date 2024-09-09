@@ -6,10 +6,11 @@ import {useDentistStates} from '../Components/utils/global.context'
 
 const Navbar = () => {
 
-  const {themeDark, setThemeDark} = useDentistStates();
+  const {themeDark, setThemeDark, state, dispatch} = useDentistStates();
 
   const handleTheme = (e) => {
     const checked = e.target.checked;
+    checked ? dispatch({ type: "THEME_LIGTH"}) : dispatch({ type: "THEME_DARK"});
     checked ? setThemeDark(false) : setThemeDark(true);
   }
 
@@ -23,7 +24,8 @@ const Navbar = () => {
         {/* <li><button onClick={handleTheme}>Change theme</button></li> */}
         <div className = 'toggleSwitch'>
             <label>
-                <input type = 'checkbox' onChange={handleTheme} checked={!themeDark}/>
+                {/* <input type = 'checkbox' onChange={handleTheme} checked={!themeDark}/> */}
+                <input type = 'checkbox' onChange={handleTheme} checked={state.theme == "light"}/>
                 <span className = 'slider'></span>
             </label>
         </div>
