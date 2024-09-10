@@ -7,46 +7,50 @@ export const ContextGlobal = createContext(undefined);
 
 const reducer = (state, action) =>{
   switch(action.type){
+    case "API_RESPONSE":
+      return {...state, api: action.payload}
+    case "LOCALSTORAGE":
+      return {...state, favs: action.payload}
     case "ADD_DENTIS":
-      return {}
+      return {...state, favs: [...state.favs, action.payload]}
     case "DEL_DENTIST":
-      return {}
+      return {...state, favs: state.favs.filter((dentist) => dentist.id != action.payload)}
     case "THEME_DARK":
-      return {... state, theme: "dark"}
+      return {...state, theme: "dark"}
     case "THEME_LIGTH":
-      return {... state, theme: "light"}
+      return {...state, theme: "light"}
+      default:
+        return state;
   }
 }
 
-export const initialState = {theme: "light", data: []}
+export const initialState = {
+  theme: "light", 
+  api: [],
+  favs: []
+}
 
 
 export const ContextProvider = ({ children }) => {
+
+  const [loading, setLoading] = useState(true);
+  const [state, dispatch] = useReducer(reducer, initialState);
   
-  const savedValue = localStorage.getItem('locStrgDentist'); //Guarda en una constante el valor del localStorage (Si existe)
-  savedValue ? null : localStorage.setItem('locStrgDentist', '[]'); //Si existe el localStoge no hace nada, sino lo crea
-
-  const [locStrgDentist, setLocStrgDentist] = useState(() => {  //usarmos un estado para sincronizar con el localStorage (opcional)
-    return savedValue ? JSON.parse(savedValue) : [];
-  });
-
-  const [themeDark, setThemeDark] = useState(false);
-
+  const localFavs = localStorage.getItem('localFavs'); //Guarda en una constante el valor del localStorage (Si existe)
+  
   //Aqui deberan implementar la logica propia del Context, utilizando el hook useMemo
   const navigate = useNavigate();
 
-  const [dentistList, setDentistList] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  const [state, dispatch] = useReducer(reducer, initialState);
+  
   console.log(state);
 
   useEffect(()=>{
+    localFavs ? dispatch({ type: "LOCALSTORAGE", payload: JSON.parse(localFavs)}) : localStorage.setItem('localFavs', '[]'); //Si existe el localStoge lo asigna a al state, sino, crea el localstorage []
     setLoading(true);
     const fetchtData = async () => {
       try{
         const dentistGet = await axios.get(`https://jsonplaceholder.typicode.com/users/`)
-        setDentistList(dentistGet.data);
+        dispatch({ type: "API_RESPONSE", payload: dentistGet.data})
         setLoading(false);
       } catch (error) {
         console.log(error);
@@ -57,7 +61,7 @@ export const ContextProvider = ({ children }) => {
   },[]);
 
   return (
-    <ContextGlobal.Provider value={{dentistList, loading, locStrgDentist, setLocStrgDentist, themeDark, setThemeDark, state, dispatch}}>
+    <ContextGlobal.Provider value={{loading, state, dispatch}}>
       {children}
     </ContextGlobal.Provider>
   );

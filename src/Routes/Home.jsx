@@ -6,15 +6,16 @@ import {useDentistStates} from '../Components/utils/global.context'
 
 const Home = () => {
 
-  const {dentistList, loading} = useDentistStates();
+  const {loading, state} = useDentistStates();
 
   return (
     <main>
       <h1>Home</h1>
       <div className='card-grid'>
           {!loading ? (
-            dentistList.map((dentist) => (
-              <Card id={dentist.id} name={dentist.name} username={dentist.username} key={dentist.id}/>
+            state.api.map((dentist) => (
+              // <Card id={dentist.id} name={dentist.name} username={dentist.username} key={dentist.id}/>
+              <Card dentist={dentist} key={dentist.id}/>
           ))) : <h2>Cargando...</h2>}
         
       </div>

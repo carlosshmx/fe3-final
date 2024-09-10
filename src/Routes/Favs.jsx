@@ -6,12 +6,12 @@ import {useDentistStates} from '../Components/utils/global.context'
 
 const Favs = () => {
 
-  const {locStrgDentist} = useDentistStates();
+  const {state} = useDentistStates();
 
-  let favorites = JSON.parse(localStorage.getItem('locStrgDentist'));
+  let favorites = JSON.parse(localStorage.getItem('localFavs'));
 
   useEffect(()=>{
-  },[locStrgDentist])
+  },[state])
 
   return (
     <div className="favs">
@@ -21,7 +21,7 @@ const Favs = () => {
         {/* Deberan renderizar una Card por cada uno de ellos✅*/}
         {favorites.length > 0 ? (
             favorites.map((dentist) => (
-              <Card id={dentist.id} name={dentist.name} username={dentist.username} key={dentist.id} deletable={true}/>
+              <Card dentist={dentist} key={dentist.id} deletable={true}/>
           ))) : <h2>No has agreago dentistas</h2>}
       </div>
     </div>

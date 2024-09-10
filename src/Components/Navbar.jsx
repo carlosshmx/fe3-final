@@ -6,12 +6,11 @@ import {useDentistStates} from '../Components/utils/global.context'
 
 const Navbar = () => {
 
-  const {themeDark, setThemeDark, state, dispatch} = useDentistStates();
+  const {state, dispatch} = useDentistStates();
 
   const handleTheme = (e) => {
     const checked = e.target.checked;
     checked ? dispatch({ type: "THEME_LIGTH"}) : dispatch({ type: "THEME_DARK"});
-    checked ? setThemeDark(false) : setThemeDark(true);
   }
 
   return (

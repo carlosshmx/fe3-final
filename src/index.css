@@ -5,8 +5,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
-  
+  background-image: url('https://www.hdwallpapers.in/download/teal_pattern-HD.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 code {
@@ -65,7 +67,7 @@ main, .contact, .favs, .details{
   padding-top: 4.5rem;
   height: 100%;
   min-height: 75vh;
-  background-color: white;
+  background-color: rgba(0, 30, 255, 0.14);
   transition: background-color 0.5s ease;
 }
 
@@ -81,7 +83,8 @@ footer {
   display: flex;
   justify-content: center;
   text-align: center;
-  padding: 2rem;
+  padding: 2rem 0;
+  margin-top: 2rem;
   position: relative;
   bottom: 0;
   width: 100%;
@@ -114,15 +117,22 @@ form{
 
 form input{
   border: none;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid rgb(255, 255, 255);
   height: 20px;
   margin-bottom: 1rem;
-  transition: background-color 0.5s ease, border-bottom 0.5s ease;
+  background-color: #00000000;
+  color: rgb(17, 17, 17);
+  padding: 0 0.5rem;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 form input:focus{
   outline: none;
-  border-bottom: 1px solid rgb(0, 0, 0);
+  border-bottom: 2px solid rgb(0, 110, 255);
+}
+
+form input::placeholder{
+  color: rgb(57, 57, 57);
 }
 
 form button{
@@ -149,11 +159,13 @@ textarea {
   border: 0.5px solid rgba(136, 136, 136, 0.576);
   border-radius: 30px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, background-color 0.5s ease;
+  background-color: rgb(230, 230, 230);
+  transition: transform 0.3s ease, background-color 0.5s ease, box-shadow 0.3s ease;
 }
 
 .card:hover{
-  transform: scale(1.05);
+  transform: scale(1.03);
+  box-shadow: 0 0 5px 5px rgb(166, 213, 255);
 }
 
 .card img{
@@ -173,9 +185,7 @@ textarea {
   transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-.card:hover{
-  border: 0.5px solid rgb(206, 217, 142);
-}
+
 
 
 .card-grid{
@@ -213,13 +223,13 @@ tr:nth-child(even) {
 }
 
 .dark{
-  background-color: rgb(0, 0, 50);
+  background-color: rgba(0, 0, 34, 0.7);
   color: white;
   transition: background-color 0.5s ease;
 }
 
 .dark main, .dark .contact, .dark .favs, .dark .details{
-  background-color: rgb(0, 0, 50);
+  background-color: rgba(0, 0, 50, 0.222);
   color: white;
   transition: background-color 0.5s ease;
 }
@@ -244,7 +254,7 @@ tr:nth-child(even) {
 .dark form input{
   border: none;
   border-bottom: 1px solid rgb(128, 128, 128);
-  background-color: rgb(0, 0, 50);
+  background-color: rgba(0, 0, 50, 0);
   color: white;
 }
 
@@ -254,7 +264,7 @@ tr:nth-child(even) {
 
 .dark form input:focus{
   outline: none;
-  border-bottom: 1px solid rgb(255, 255, 255);
+  border-bottom: 2px solid rgb(255, 255, 255);
 }
 
 .dark footer{
