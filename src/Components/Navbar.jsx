@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import {useDentistStates} from '../Components/utils/global.context'
 
 //Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
@@ -17,13 +17,11 @@ const Navbar = () => {
     <nav>
      <h1>ColmeClinic</h1>
       <ul>
-        <li><Link to={`/`}>Home</Link></li>
-        <li><Link to={`/contact`}>Contact </Link></li>
-        <li><Link to={`/favs`}>Favs</Link></li>
-        {/* <li><button onClick={handleTheme}>Change theme</button></li> */}
+        <li><NavLink to={`/`}>Home</NavLink></li>
+        <li><NavLink to={`/contact`}>Contact </NavLink></li>
+        <li><NavLink to={`/favs`}>Favs</NavLink></li>
         <div className = 'toggleSwitch'>
             <label>
-                {/* <input type = 'checkbox' onChange={handleTheme} checked={!themeDark}/> */}
                 <input type = 'checkbox' onChange={handleTheme} checked={state.theme == "light"}/>
                 <span className = 'slider'></span>
             </label>

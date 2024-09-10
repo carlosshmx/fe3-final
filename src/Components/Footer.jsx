@@ -1,10 +1,25 @@
 import React from 'react'
+import digitalhouse from '../../public/images/DH.png'
+import facebook from '../../public/images/ico-facebook.png'
+import instagram from '../../public/images/ico-instagram.png'
+import tiktok from '../../public/images/ico-tiktok.png'
+import whatsapp from '../../public/images/ico-whatsapp.png'
+
 
 const Footer = () => {
   return (
     <footer>
-        <p>Powered by</p>
-        <img src="./img/DH.png" alt='DH-logo' />
+        <div className='footerLogo'>
+          <p>Powered by</p>
+          <img src={digitalhouse} alt='DH-logo'  />
+        </div>
+        <div className='footerIcons'>
+          <img src={facebook} alt="Facebook" />
+          <img src={instagram} alt="Instagram" />
+          <img src={tiktok} alt="Tiktok" />
+          <img src={whatsapp} alt="WhatsApp" />
+        </div>
+        
     </footer>
   )
 }
