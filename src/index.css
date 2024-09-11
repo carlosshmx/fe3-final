@@ -23,9 +23,9 @@ code {
   cursor: pointer;
 }
 
-h1, h2{
+h1, h2, h3{
   text-align: center;
-  transition: color 1s ease;
+  transition: color 0.5s ease;
 }
 
 nav{
@@ -58,7 +58,7 @@ a{
   text-decoration: none;
   margin: 5px;
   cursor: pointer;
-  transition: color 1s ease;
+  transition: color 0.5s ease;
 }
 a:hover{
   color: rgb(136, 136, 136);
@@ -185,8 +185,24 @@ textarea {
   border-radius: 30px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   background-color: rgb(230, 230, 230);
+  position: relative;
   transition: transform 0.3s ease, background-color 0.5s ease, box-shadow 0.3s ease;
 }
+
+.card .fa-star{
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 1.7rem;
+  color: #0000008b;
+}
+
+.card .checked{
+  color: #ffe100ed;
+  -webkit-text-stroke: 1px rgba(58, 58, 58, 0.663);
+  text-shadow: 0px 0px 20px rgb(11, 11, 11);
+}
+
 
 .card:hover{
   transform: scale(1.03);
@@ -210,21 +226,39 @@ textarea {
   transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-
-
-
 .card-grid{
   display: flex;
   justify-content: space-evenly;
   gap: 1rem;
   width: 90vw;
+  max-width: 1200px;
   height: auto;
   flex-wrap: wrap;
   margin: 0 auto;
 }
 
 .details{
-  text-align: center;
+  
+}
+
+.detailsContainer{
+  margin: 0 auto;
+  width: 60vw;
+  max-width: 530px;
+  min-width: 260px;
+  margin-top: 3rem;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background-color: #ccc;
+  padding: 1rem;
+  border-radius: 30px;
+  transition: background-color 0.5s ease;
+}
+
+.detailsContainer img{
+  border-radius: 30px;
 }
 
 
@@ -292,8 +326,15 @@ tr:nth-child(even) {
   border-bottom: 2px solid rgb(255, 255, 255);
 }
 
+.dark .detailsContainer{
+  background-color: #000000;
+  transition: background-color 0.5s ease;
+}
+
+
 .dark footer{
   background-color: #000;
+  transition: filter 0.5s ease, background-color 0.5s ease;
 }
 
 .dark footer .footerLogo img{

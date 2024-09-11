@@ -13,6 +13,8 @@ const Detail = () => {
 
   const navigate = useNavigate();
 
+  const imageUrl =  `../../public/profile_images/${id}.jpg`
+
   useEffect(()=>{
     setLoading(true);
     const fetchtData = async () => {
@@ -32,8 +34,16 @@ const Detail = () => {
     <>
      {!loading ? (
       <div className='details'>
-        <h2>Detail Dentist id: {dentist.id} </h2>
-        <table>
+        <div className='detailsContainer'>
+          <img src={imageUrl} alt="" />
+          <div>
+            <h3>{dentist.name}</h3>
+            <p>Email: {dentist.email}</p>
+            <p>Phone: {dentist.phone}</p>
+            <p>Website: {dentist.website}</p>
+          </div>
+        </div>
+        {/* <table>
           <thead>
             <tr>
               <th>Name</th>
@@ -50,7 +60,7 @@ const Detail = () => {
               <td>{dentist.website}</td>
             </tr>
           </tbody>
-        </table>
+        </table> */}
       </div>
       ):(
         <h2>Cargando...</h2>

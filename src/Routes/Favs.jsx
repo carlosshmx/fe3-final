@@ -9,6 +9,7 @@ const Favs = () => {
   const {state} = useDentistStates();
 
   let favorites = JSON.parse(localStorage.getItem('localFavs'));
+  console.log(favorites);
 
   useEffect(()=>{
   },[state])
