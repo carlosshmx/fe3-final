@@ -14,7 +14,7 @@ const Card = ({ dentist }) => {
     dispatch({ type: state.favs.some((fav) => fav.id == dentist.id) ? "DEL_DENTIST" : "ADD_DENTIS", payload: dentist });
   };
 
-  const imageUrl =  `../../public/images/${dentist.id}.jpg`
+  const imageUrl =  `/public/images/${dentist.id}.jpg`
 
 
   return (
