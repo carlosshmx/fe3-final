@@ -1,28 +1,11 @@
 import React, { useEffect, useState, createContext, useContext, useReducer, } from 'react'
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
+import {reducer} from './reducer.js'
 
 
 export const ContextGlobal = createContext(undefined);
 
-const reducer = (state, action) =>{
-  switch(action.type){
-    case "API_RESPONSE":
-      return {...state, api: action.payload}
-    case "LOCALSTORAGE":
-      return {...state, favs: action.payload}
-    case "ADD_DENTIS":
-      return {...state, favs: [...state.favs, action.payload]}
-    case "DEL_DENTIST":
-      return {...state, favs: state.favs.filter((dentist) => dentist.id != action.payload)}
-    case "THEME_DARK":
-      return {...state, theme: "dark"}
-    case "THEME_LIGTH":
-      return {...state, theme: "light"}
-      default:
-        return state;
-  }
-}
 
 export const initialState = {
   theme: "light", 
@@ -59,6 +42,10 @@ export const ContextProvider = ({ children }) => {
     }
     fetchtData();
   },[]);
+
+  useEffect(() => {
+    localStorage.setItem("localFavs", JSON.stringify(state.favs));
+  }, [state.favs]);
 
   return (
     <ContextGlobal.Provider value={{loading, state, dispatch}}>

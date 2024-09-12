@@ -8,9 +8,8 @@ const Navbar = () => {
 
   const {state, dispatch} = useDentistStates();
 
-  const handleTheme = (e) => {
-    const checked = e.target.checked;
-    checked ? dispatch({ type: "THEME_LIGTH"}) : dispatch({ type: "THEME_DARK"});
+  const handleTheme = () => {
+    dispatch({type: "TOGGLE_THEME"})
   }
 
   return (
