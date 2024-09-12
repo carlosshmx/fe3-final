@@ -2,6 +2,7 @@ import React from "react";
 import doctor from "/images/doctor.jpg"
 import { Link, useNavigate } from "react-router-dom";
 import {useDentistStates} from '../Components/utils/global.context'
+import img1 from "../../public/Images/1.jpg"
 
 
 const Card = ({ dentist }) => {
@@ -14,12 +15,12 @@ const Card = ({ dentist }) => {
     dispatch({ type: state.favs.some((fav) => fav.id == dentist.id) ? "DEL_DENTIST" : "ADD_DENTIS", payload: dentist });
   };
 
-  const imageUrl =  `/public/images/${dentist.id}.jpg`
+  const imageUrl =  `/public/Images/${dentist.id}.jpg`
 
 
   return (
     <div className="card" >
-        <img src={imageUrl} alt="" />
+        <img src={img1} alt="" />
         <i className={'fa-solid fa-star ' + (isFav ? 'checked' : '')} onClick={handleFav }></i>
         <Link to={`/dentist/${dentist.id}`}>{dentist.name}</Link>
         <p>User: {dentist.username}</p>
