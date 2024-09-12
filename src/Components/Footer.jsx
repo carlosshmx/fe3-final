@@ -1,9 +1,9 @@
 import React from 'react'
-import digitalhouse from '../../public/Images/DH.png'
-import facebook from '../../public/Images/ico-facebook.png'
-import instagram from '../../public/Images/ico-instagram.png'
-import tiktok from '../../public/Images/ico-tiktok.png'
-import whatsapp from '../../public/Images/ico-whatsapp.png'
+import digitalhouse from '../../public/images/DH.png'
+import facebook from '../../public/images/ico-facebook.png'
+import instagram from '../../public/images/ico-instagram.png'
+import tiktok from '../../public/images/ico-tiktok.png'
+import whatsapp from '../../public/images/ico-whatsapp.png'
 
 
 const Footer = () => {

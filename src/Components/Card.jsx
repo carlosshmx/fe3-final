@@ -2,7 +2,7 @@ import React from "react";
 import doctor from "/images/doctor.jpg"
 import { Link, useNavigate } from "react-router-dom";
 import {useDentistStates} from '../Components/utils/global.context'
-import img1 from "../../public/Images/1.jpg"
+import img1 from "../../public/images/1.jpg"
 
 
 const Card = ({ dentist }) => {
@@ -15,7 +15,7 @@ const Card = ({ dentist }) => {
     dispatch({ type: state.favs.some((fav) => fav.id == dentist.id) ? "DEL_DENTIST" : "ADD_DENTIS", payload: dentist });
   };
 
-  const imageUrl =  `/public/Images/${dentist.id}.jpg`
+  const imageUrl =  `/public/images/${dentist.id}.jpg`
 
 
   return (
