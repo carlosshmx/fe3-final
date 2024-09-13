@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
-
+import { profileImg } from '../Components/utils/imagesImport.js'
 
 const Detail = () => {
  
@@ -11,7 +11,6 @@ const Detail = () => {
 
   const navigate = useNavigate();
 
-  const imageUrl =  `../../public/profile_images/${id}.jpg`
 
   useEffect(()=>{
     setLoading(true);
@@ -33,7 +32,7 @@ const Detail = () => {
      {!loading ? (
       <div className='details'>
         <div className='detailsContainer'>
-          <img src={imageUrl} alt="" />
+          <img src={ profileImg[dentist.id-1] } alt="" />
           <div>
             <h3>{dentist.name}</h3>
             <p>Email: {dentist.email}</p>

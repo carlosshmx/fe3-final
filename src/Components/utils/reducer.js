@@ -10,8 +10,9 @@ export const reducer = (state, action) =>{
         return {...state, favs: state.favs.filter((dentist) => dentist.id != action.payload.id)}
       case "TOGGLE_THEME":
         return {...state, theme: state.theme == "light" ? "dark" : "light"}
-
-        default:
+      case "RESET_FAVS":
+        return {...state, favs: []}
+      default:
           return state;
     }
   }
